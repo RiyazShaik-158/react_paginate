@@ -60,7 +60,7 @@ function Fetcher() {
     // const displayData = () => 
 
 return (
-    <div>
+    <div className='fetcher_head'>
       <input type='text' autoFocus onChange={handleMovieName} value={movieName}/>
       <select name="type" id="type" onChange={handleTypeSelect}>
         <option></option>
@@ -68,8 +68,22 @@ return (
         <option>series</option>
         <option>game</option>
       </select>
+      {
+        movieName && moviesList?.length !== 0 && 
+        <ReactPaginate 
+            previousLabel = 'prev'
+            nextLabel = 'next'
+            pageCount={pageCount}
+            onPageChange={handlePageChange}
+            breakLabel = '...'
+            containerClassName={'paginationButtonsDiv'}
+            previousLinkClassName={'previousButton'}
+            nextLinkClassName={'nextButton'}
+            disabledClassName={'disabledPagination'}
+            activeClassName={'paginationActive'}
+        />
+      }
       <div style={{display:'flex',flexWrap:'wrap',gap:'10px',width:'80%'}}>
-        {/* {displayData} */}
         {
             moviesList?.map(item => {
                 return(
@@ -80,16 +94,7 @@ return (
             })
         }
       </div>
-      {
-        movieName && moviesList?.length !== 0 && 
-        <ReactPaginate 
-            previousLabel = 'prev'
-            nextLabel = 'next'
-            pageCount={pageCount}
-            onPageChange={handlePageChange}
-            breakLabel = '...'
-        />
-      }
+      
       
     </div>
   )
