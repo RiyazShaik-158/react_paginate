@@ -51,11 +51,21 @@ function Fetcher() {
         setPageNumber(selected)
     }
 
-    useEffect(() => {
-        movieName && 
-        fetchingFunction();
-    },[movieName,pageNumber,type,moviesList])
+    // useEffect(() => {
+    //     movieName && 
+    //     fetchingFunction();
+    // },[movieName,pageNumber,type,moviesList])
 
+    useEffect(()=>{
+        const getData = setTimeout(()=>{
+            movieName && 
+            fetchingFunction();
+            
+        },1000)
+
+        return ()=>clearTimeout(getData)
+
+    },[movieName,pageNumber,type,moviesList])
 
     // const displayData = () => 
 
