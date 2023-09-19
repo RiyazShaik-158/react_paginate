@@ -26,3 +26,4 @@ dist-ssr
 
 # api_key
 .env
+envReplacementConfig.js
