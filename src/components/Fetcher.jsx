@@ -9,7 +9,7 @@ function Fetcher() {
     const [movieName,setMovieName] = useState("");
     const [moviesList,setMoviesList] = useState([]);
     const [numberOfMoviesResult,setNumberOfMoviesResult] = useState();
-    const [pageNumber,setPageNumber] = useState(1);
+    const [pageNumber,setPageNumber] = useState();
     const moviesListPerPage = 10;
     const [type,setType] = useState("");
     const pagesVisited = pageNumber * moviesListPerPage;
@@ -73,7 +73,7 @@ function Fetcher() {
 return (
     <div className='fetcher_head'>
         <div className='input_select_div'>
-            
+
             <input type='text' autoFocus onChange={handleMovieName} value={movieName}/>
             <select name="type" id="type" onChange={handleTypeSelect}>
                 <option disabled>Select</option>
@@ -98,12 +98,20 @@ return (
             activeClassName={'paginationActive'}
         />
       }
-      <div style={{display:'flex',flexWrap:'wrap',gap:'10px',width:'80%'}} className='movies_list_shower'>
+      <div className='movies_list_shower'>
         {
             moviesList?.map(item => {
                 return(
                     // <h4>{item.Title}</h4>
-                        <img key={item.imdbID} src={item.Poster} alt='img' style={{aspectRatio:'4:3',objectFit:'contain',width:'300px',height:''}}/>
+                    <>
+                    {
+                        item.Poster ?
+                        <img key={item.imdbID} src={item.Poster !== "" ? item.Poster :  'Image_not_available.png'} alt="img" style={{aspectRatio:'4:3',objectFit:'contain',width:'300px',height:''}}/>
+                        :
+                        <img key={item.imdbID} src='Image_not_available.png' />
+
+                    }
+                    </>
                     
                 )
             })

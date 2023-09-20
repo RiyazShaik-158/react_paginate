@@ -15,15 +15,82 @@
         max-height: 3rem;
         align-items: center;
         justify-content: center;
+        // margin-bottom: 10px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #000;
 
         input{
             font-size: 1.2rem;
             flex: .7;
+            outline: none;
+            border: none;
         }
 
         select {
             font-size: 1.2rem;
             flex: .3;
+        }
+    }
+
+    .paginationButtonsDiv{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        list-style: none;
+        width: 50%;
+
+
+        a{
+            color: #0070c0;
+            // background-color: #0070c0;
+            padding:10px;
+            // border-radius: 50%;
+            border :1px solid #0070c0;
+            cursor: pointer;
+            transform: translateY(20px);
+            transition: 0.15s all ease;
+        }
+        :hover{
+            top: 0%;
+            color: #fff;
+            transform: translateY(0);
+            background-color: #0070c0;
+        }
+
+        .paginationActive {
+            a{
+                color: #fff;
+                background-color: #0070c0;
+            }
+            
+        }
+
+        .disabledPagination{
+            a {
+                background-color: gray;
+                color: #fff;
+                border: none;
+                cursor: not-allowed;
+            }
+        }
+    }
+
+    .movies_list_shower{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap:15px;
+        width: 85%;
+
+
+        img{
+            // aspect-ratio: 4:3;
+            aspect-ratio: '4:3';
+            object-fit: contain;
+            width: 200px;
+
+
         }
     }
 }
