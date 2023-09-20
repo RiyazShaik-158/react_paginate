@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { config } from '../../envReplacementConfig';
+import './fetcher.scss';
 
 function Fetcher() {
 
@@ -71,13 +72,17 @@ function Fetcher() {
 
 return (
     <div className='fetcher_head'>
-      <input type='text' autoFocus onChange={handleMovieName} value={movieName}/>
-      <select name="type" id="type" onChange={handleTypeSelect}>
-        <option></option>
-        <option>movie</option>
-        <option>series</option>
-        <option>game</option>
-      </select>
+        <div className='input_select_div'>
+            
+            <input type='text' autoFocus onChange={handleMovieName} value={movieName}/>
+            <select name="type" id="type" onChange={handleTypeSelect}>
+                <option disabled>Select</option>
+                <option>movie</option>
+                <option>series</option>
+                <option>game</option>
+            </select>
+        </div>
+     
       {
         movieName && moviesList?.length !== 0 && 
         <ReactPaginate 
@@ -93,7 +98,7 @@ return (
             activeClassName={'paginationActive'}
         />
       }
-      <div style={{display:'flex',flexWrap:'wrap',gap:'10px',width:'80%'}}>
+      <div style={{display:'flex',flexWrap:'wrap',gap:'10px',width:'80%'}} className='movies_list_shower'>
         {
             moviesList?.map(item => {
                 return(
@@ -110,4 +115,4 @@ return (
   )
 }
 
-export default Fetcher
+export default Fetcher;
