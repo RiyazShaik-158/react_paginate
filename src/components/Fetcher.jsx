@@ -38,7 +38,7 @@ function Fetcher() {
     const fetchingFunction = async () => {
         // const apiKey = import.meta.env.REACT_APP_API_KEY;
         // console.log("apiKey :",apiKey)
-        const fetchedData = await fetch(`https://www.omdbapi.com/?s=${movieName}&apikey=${apiKey}&page=${pageNumber}&type=${type}`);
+        const fetchedData = await fetch(`https://www.omdbapi.com/?s=${movieName}&apikey=${apiKey}&page=${pageNumber}&type=`);
         const resp = await fetchedData.json()
         console.log(resp)
         setMoviesList(resp.Search)
@@ -58,15 +58,17 @@ function Fetcher() {
     // },[movieName,pageNumber,type,moviesList])
 
     useEffect(()=>{
-        const getData = setTimeout(()=>{
-            movieName && 
-            fetchingFunction();
+        // const getData = setTimeout(()=>{
+        //     fetchingFunction();
+        //     console.count("showing movies")
             
-        },1000)
+        // },1000)
 
-        return ()=>clearTimeout(getData)
+        // return ()=>clearTimeout(getData)
+        if(movieName.length > 2) fetchingFunction()
+        console.count('rendering')
 
-    },[movieName,pageNumber,type,moviesList])
+    },[movieName,pageNumber,moviesList])
 
     // const displayData = () => 
 
