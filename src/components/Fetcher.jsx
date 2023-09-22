@@ -68,7 +68,8 @@ function Fetcher() {
         if(movieName.length > 2) fetchingFunction()
         console.count('rendering')
 
-    },[movieName,pageNumber,moviesList])
+    },[movieName,pageNumber])
+    // removed movieList here because it is not updating correctly, hence useEffect renders infinite times
 
     // const displayData = () => 
 
