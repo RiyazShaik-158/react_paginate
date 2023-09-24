@@ -53,12 +53,13 @@
 // export default App
 
 
-import React from 'react'
-import Fetcher from './components/Fetcher'
+import React from 'react';
+import Fetcher from './components/Fetcher';
+import './app.scss';
 
 function App() {
   return (
-    <div>
+    <div className='App_Fetcher'>
       <Fetcher />
     </div>
   )
