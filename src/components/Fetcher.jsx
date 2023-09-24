@@ -9,7 +9,7 @@ function Fetcher() {
     const [movieName,setMovieName] = useState("");
     const [moviesList,setMoviesList] = useState([]);
     const [numberOfMoviesResult,setNumberOfMoviesResult] = useState();
-    const [pageNumber,setPageNumber] = useState();
+    const [pageNumber,setPageNumber] = useState(1);
     const moviesListPerPage = 10;
     const [type,setType] = useState("");
     const pagesVisited = pageNumber * moviesListPerPage;
@@ -41,15 +41,22 @@ function Fetcher() {
         const fetchedData = await fetch(`https://www.omdbapi.com/?s=${movieName}&apikey=${apiKey}&page=${pageNumber}&type=`);
         const resp = await fetchedData.json()
         console.log(resp)
+        console.log("This is for page no: ",pageNumber);
+        console.log("page count :",pageCount)
         setMoviesList(resp.Search)
         setNumberOfMoviesResult(resp?.totalResults)
     }
 
-    const pageCount = Math.ceil(numberOfMoviesResult / moviesListPerPage);
+    // let pageCount ;
+    
+    // if(numberOfMoviesResult){
+      const pageCount = Math.ceil(numberOfMoviesResult / moviesListPerPage);
+    // }
 
     const handlePageChange = ({selected}) => {
-        alert('selectedPage :',selected)
-        setPageNumber(selected)
+        // console.log('selectedPage :',selected)
+        const nextPage = selected + 1;
+        setPageNumber(nextPage)
     }
 
     // useEffect(() => {
