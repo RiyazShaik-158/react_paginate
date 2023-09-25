@@ -110,18 +110,22 @@ return (
       }
       <div className='movies_list_shower'>
         {
-            moviesList?.map(item => {
+            moviesList?.map((item,idx) => {
                 return(
                     // <h4>{item.Title}</h4>
-                    <>
+                    <div key={idx} className='imageDiv'>
                     {
                         item.Poster ?
-                        <img key={item.imdbID} src={item.Poster !== "" ? item.Poster :  'Image_not_available.png'} alt="img" style={{aspectRatio:'4:3',objectFit:'contain',width:'300px',height:''}}/>
+                        <img key={item.imdbID} src={item.Poster !== "N/A" ? item.Poster :  'Image_not_available.png'} alt="img" style={{aspectRatio:'4:3',objectFit:'contain',width:'300px',height:''}}/>
                         :
                         <img key={item.imdbID} src='Image_not_available.png' />
-
+                       
                     }
-                    </>
+                         <div className='movieTitle'>
+                            <h4>{item.Title}</h4>
+                        </div>
+                    
+                    </div>
                     
                 )
             })
