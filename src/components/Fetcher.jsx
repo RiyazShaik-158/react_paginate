@@ -56,7 +56,7 @@ function Fetcher() {
     const handlePageChange = ({selected}) => {
         // console.log('selectedPage :',selected)
         const nextPage = selected + 1;
-        setPageNumber(nextPage)
+        setPageNumber(nextPage);
     }
 
     // useEffect(() => {
